@@ -1,0 +1,1 @@
+This is a sample document for testing annotation functionality. It contains several entities like John Doe who works at ABC Corporation located in New York. The meeting was scheduled for January 15, 2024.
