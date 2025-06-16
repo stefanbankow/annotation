@@ -136,6 +136,7 @@ const AnnotationPage: React.FC = () => {
           <DocumentViewer
             document={document}
             annotations={annotations}
+            labels={labels}
             selectedAnnotation={selectedAnnotation}
             onAnnotationSelect={handleAnnotationSelect}
             onCreateAnnotation={handleCreateAnnotation}
