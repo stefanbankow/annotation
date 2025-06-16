@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle, theme } from './styles/theme';
 import Navigation from './components/Navigation/Navigation';
@@ -14,18 +14,16 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Router>
-        <AppContainer>
-          <Navigation />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/documents" element={<DocumentsPage />} />
-            <Route path="/documents/:id/annotate" element={<AnnotationPage />} />
-            <Route path="/labels" element={<LabelsPage />} />
-            <Route path="/analytics" element={<AnalyticsPage />} />
-          </Routes>
-        </AppContainer>
-      </Router>
+      <AppContainer>
+        <Navigation />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/documents" element={<DocumentsPage />} />
+          <Route path="/documents/:id/annotate" element={<AnnotationPage />} />
+          <Route path="/labels" element={<LabelsPage />} />
+          <Route path="/analytics" element={<AnalyticsPage />} />
+        </Routes>
+      </AppContainer>
     </ThemeProvider>
   );
 }

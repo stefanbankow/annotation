@@ -44,7 +44,7 @@ services:
       dockerfile: Dockerfile
     container_name: annotation-frontend
     ports:
-      - "3000:3000"
+      - "3000:80"
     environment:
       - REACT_APP_API_URL=http://localhost:8080/api
     depends_on:
