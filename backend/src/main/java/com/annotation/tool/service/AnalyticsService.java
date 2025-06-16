@@ -281,4 +281,44 @@ public class AnalyticsService {
                 .max()
                 .orElse(0);
     }
+    
+    /**
+     * Get comprehensive analytics data for the frontend dashboard
+     */
+    public Map<String, Object> getComprehensiveAnalytics() {
+        Map<String, Object> analytics = new HashMap<>();
+        
+        // Basic statistics
+        analytics.put("totalDocuments", documentRepository.count());
+        analytics.put("totalAnnotations", annotationRepository.count());
+        analytics.put("totalLabels", labelRepository.count());
+        analytics.put("totalLabelRelationships", relationshipRepository.count());
+        
+        // Most used labels
+        List<Map<String, Object>> mostUsedLabels = getMostFrequentLabels(10);
+        analytics.put("mostUsedLabels", mostUsedLabels);
+        
+        // Label distribution (same as most used labels but formatted differently)
+        List<Map<String, Object>> labelDistribution = mostUsedLabels.stream()
+            .map(labelData -> {
+                Map<String, Object> distribution = new HashMap<>();
+                LabelDTO label = (LabelDTO) labelData.get("label");
+                distribution.put("labelName", label.getName());
+                distribution.put("count", labelData.get("usageCount"));
+                distribution.put("color", label.getColor());
+                return distribution;
+            })
+            .collect(Collectors.toList());
+        analytics.put("labelDistribution", labelDistribution);
+        
+        // Annotation trends (placeholder - could be implemented based on creation dates)
+        List<Map<String, Object>> annotationTrends = new ArrayList<>();
+        analytics.put("annotationTrends", annotationTrends);
+        
+        // Recent activity (placeholder)
+        List<Map<String, Object>> recentActivity = new ArrayList<>();
+        analytics.put("recentActivity", recentActivity);
+        
+        return analytics;
+    }
 }

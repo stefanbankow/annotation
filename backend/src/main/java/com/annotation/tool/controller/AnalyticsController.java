@@ -28,6 +28,15 @@ public class AnalyticsController {
     private AnalyticsService analyticsService;
 
     /**
+     * Get comprehensive analytics data for the frontend dashboard
+     */
+    @GetMapping
+    public ResponseEntity<Map<String, Object>> getAnalytics() {
+        Map<String, Object> analytics = analyticsService.getComprehensiveAnalytics();
+        return ResponseEntity.ok(analytics);
+    }
+
+    /**
      * Get dashboard statistics summary
      */
     @GetMapping("/dashboard")
