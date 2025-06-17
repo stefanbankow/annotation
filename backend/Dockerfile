@@ -1,4 +1,3 @@
-# Use Eclipse Temurin 17 as base image (more secure)
 FROM eclipse-temurin:17-jdk-alpine
 
 # Set working directory
